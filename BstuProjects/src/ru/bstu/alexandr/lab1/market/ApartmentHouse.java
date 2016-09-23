@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class ApartmentHouse extends Building {
     int countApartments;
 
+    @Override
     public void init(Scanner in) {
         //Scanner in=new Scanner(System.in);
         System.out.println("Enter exploitationPeriod: ");

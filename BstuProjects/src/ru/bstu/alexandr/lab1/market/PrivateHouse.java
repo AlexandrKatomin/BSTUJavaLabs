@@ -3,26 +3,28 @@ package ru.bstu.alexandr.lab1.market;
 import java.util.Scanner;
 
 /**
- * Created by Александр on 22.09.2016.
+ * @author Александр on 22.09.2016.
+ * todo сделать все классы наследники аналогичны этому
  */
 public class PrivateHouse extends Building {
-    int countBedrooms;
+    private int countBedrooms;
 
     public void init(Scanner in) {
-        //Scanner in=new Scanner(System.in);
-        System.out.println("Enter exploitationPeriod: ");
-        this.exploitationPeriod = in.nextInt();
-        System.out.println("Enter count of floors: ");
-        this.countFloors = in.nextInt();
-        System.out.println("Enter count of bedrooms: ");
-        this.countBedrooms = in.nextInt();
+        exploitationPeriod = readInt(in, "Enter exploitationPeriod: ");
+        countFloors = readInt(in, "Enter count of floors: ");
+        countBedrooms = readInt(in, "Enter count of bedrooms: ");
+    }
+
+    private int readInt(Scanner in, String informMessage) {
+        System.out.println(informMessage);
+        return in.nextInt();
     }
 
     public String toString() {
-        String string = "It is PrivateHouse;";
-        string += " exploitationPeriod: " + exploitationPeriod + ", " + "count of floors: " + countFloors + ", " + "area: " + ", ";
-        string += "count of bedrooms: " + countBedrooms;
-        return string;
+        return "It is PrivateHouse; exploitationPeriod: "
+                + exploitationPeriod + ", " + "count of floors: "
+                + countFloors + ", " + "area: " + ", "
+                + "count of bedrooms: " + countBedrooms;
     }
 
 }

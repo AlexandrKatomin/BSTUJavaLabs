@@ -7,6 +7,8 @@ import ru.bstu.alexandr.lab1.market.Supermarket;
 
 import java.util.Scanner;
 
+// FIXME: вынести в отдельный класс, а тут вызывать методы этого класса
+// 23.09.2016
 public class Main {
 
     public static void main(String[] args) {
@@ -23,12 +25,9 @@ public class Main {
         }
         int numberConst;
 
-
-        numberConst = minConstructWithMinExtPeriod(allConstruction);
+        numberConst = findMinConstructWithMinExtPeriod(allConstruction);
         //System.out.println("Construction with min exploitation period");
         System.out.println(allConstruction[numberConst].toString());
-
-
     }
 
     private static int writeSelectOfConstruction(Scanner in) {
@@ -57,7 +56,7 @@ public class Main {
         return construction;
     }
 
-    private static int minConstructWithMinExtPeriod(Construction[] constructions) {
+    private static int findMinConstructWithMinExtPeriod(Construction[] constructions) {
         int min = 32000;
         int numberConstruction = -1;
         for (int i = 0; i < constructions.length; i++) {

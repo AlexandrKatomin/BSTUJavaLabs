@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * Created by Александр on 22.09.2016.
  */
-public abstract class Building extends Construction {
+abstract class Building extends Construction {
     int countFloors;
 
 }
