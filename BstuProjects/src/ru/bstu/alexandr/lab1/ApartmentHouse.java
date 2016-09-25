@@ -1,4 +1,4 @@
-package ru.bstu.alexandr.lab1.market;
+package ru.bstu.alexandr.lab1;
 
 import java.util.Scanner;
 
