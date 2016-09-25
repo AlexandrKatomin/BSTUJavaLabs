@@ -9,9 +9,10 @@ public class WorkWithConst {
     static int writeSelectOfConstruction(Scanner in) {
         int number = 0;
         //Scanner in = new Scanner(System.in)
-        while (number < 1 || number > 3) {
+        while (number < 1 || number > 5) {
             System.out.println("Enter 1 -  supermarket," +
-                    " 2 - privateHouse, 3 - ApartmentHouse");
+                    " 2 - privateHouse, 3 - ApartmentHouse," +
+                    " 4 - Bridge, 5 - Tunnel");
             number = in.nextInt();
         }
         return number - 1;

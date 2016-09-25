@@ -10,12 +10,17 @@ public abstract class Construction {
     static final int SUPERMARKET = 0;
     static final int PRIVATE_HOUSE = 1;
     static final int APARTMENT_HOUSE = 2;
+    static final int BRIDGE = 3;
+    static final int TUNNEL = 4;
+
     int exploitationPeriod;
 
     public static Construction create(int type) {
         if (type > 2) throw new IllegalArgumentException("Incorrect Construction code");
         if (type >= 0 && type <= 2)
             return Building.create(type);
+        if (type >= 3 && type <= 4)
+            return RoadConstruction.create(type);
         return null;
     }
 

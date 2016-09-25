@@ -18,7 +18,7 @@ public class ApartmentHouse extends Building {
     public String toString() {
         return "It is ApartmentHouse; exploitationPeriod: "
                 + exploitationPeriod + ", " + "count of floors: "
-                + countFloors + ", area: " + ", "
+                + countFloors + ", "
                 + "count of apartments: " + countApartments;
     }
 }
