@@ -16,5 +16,10 @@ public abstract class Construction {
 
     public abstract String toString();
 
+    protected int readInt(Scanner in, String informMessage) {
+        System.out.print(informMessage);
+        return in.nextInt();
+    }
+
 
 }

@@ -11,23 +11,17 @@ public class Supermarket extends Building {
     int countExit;
 
     public void init(Scanner in) {
-        // Scanner in=new Scanner(System.in);
-        System.out.println("Enter exploitationPeriod: ");
-        this.exploitationPeriod = in.nextInt();
-        System.out.println("Enter count of floors: ");
-        this.countFloors = in.nextInt();
-        System.out.println("Enter area: ");
-        this.area = in.nextInt();
-        System.out.println("Enter count of Exits: ");
-        this.countExit = in.nextInt();
+        exploitationPeriod = readInt(in, "Enter exploitationPeriod: ");
+        countFloors = readInt(in, "Enter count of floors: ");
+        area = readInt(in, "Enter area: ");
+        countExit = readInt(in, "Enter count of Exits: ");
     }
+
 
     public String toString() {
-        String string = "It is supepmarket;";
-        string += " exploitationPeriod: " + exploitationPeriod + ", " + "count of floors: " + countFloors + ", " + "area: " + ", ";
-        string += "count of Exits: " + countExit;
-        return string;
+        return "It is supepmarket; exploitationPeriod: "
+                + exploitationPeriod + ", " + "count of floors: "
+                + countFloors + ", " + "area: " + ", count of Exits: "
+                + countExit;
     }
-
-
 }

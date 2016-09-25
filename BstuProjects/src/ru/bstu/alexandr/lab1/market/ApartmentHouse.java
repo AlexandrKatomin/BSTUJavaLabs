@@ -10,19 +10,15 @@ public class ApartmentHouse extends Building {
 
     @Override
     public void init(Scanner in) {
-        //Scanner in=new Scanner(System.in);
-        System.out.println("Enter exploitationPeriod: ");
-        this.exploitationPeriod = in.nextInt();
-        System.out.println("Enter count of floors: ");
-        this.countFloors = in.nextInt();
-        System.out.println("Enter count of apartments: ");
-        this.countApartments = in.nextInt();
+        exploitationPeriod = readInt(in, "Enter exploitationPeriod: ");
+        countFloors = readInt(in, "Enter count of floors: ");
+        countApartments = readInt(in, "Enter count of apartments: ");
     }
 
     public String toString() {
-        String string = "It is ApartmentHouse;";
-        string += " exploitationPeriod: " + exploitationPeriod + ", " + "count of floors: " + countFloors + ", " + "area: " + ", ";
-        string += "count of apartments: " + countApartments;
-        return string;
+        return "It is ApartmentHouse; exploitationPeriod: "
+                + exploitationPeriod + ", " + "count of floors: "
+                + countFloors + ", area: " + ", "
+                + "count of apartments: " + countApartments;
     }
 }
