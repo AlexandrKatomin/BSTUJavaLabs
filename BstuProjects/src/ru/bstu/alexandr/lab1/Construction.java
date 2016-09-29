@@ -8,16 +8,15 @@ import java.util.prefs.BackingStoreException;
  */
 public abstract class Construction {
 
-    int exploitationPeriod;
+    int exploitationPeriod;//пока что оставил default так как ломается, еще не освоил get
 
     public static Construction create(int number) {
         enumConstruction construction = null;
-        for (enumConstruction a : enumConstruction.values()) {
+        for (enumConstruction a : enumConstruction.values())
             if (number == a.ordinal()) {
                 construction = a;
                 break;
             }
-        }
         // todo Правильное ли приминение экзепшена ?
         if (construction == null)
             throw new RuntimeException("Incorrect Construction code");
@@ -37,19 +36,23 @@ public abstract class Construction {
         }
     }
 
-    void writeallConstructiond() {
+    public static void writeAllConstructiond() {
         for (enumConstruction a : enumConstruction.values()) {
             System.out.println(a.ordinal() + " - " + a);
         }
     }
 
-    public abstract void init(Scanner scanner);
+    public void init(Scanner in) {
+        exploitationPeriod = readInt(in, "Enter exploitationPeriod: ");
+    }
 
     public int getExploitationPeriod() {
         return this.exploitationPeriod;
     }
 
-    public abstract String toString();
+    public String toString() {
+        return " exploitationPeriod: " + exploitationPeriod;
+    }
 
     protected int readInt(Scanner in, String informMessage) {
         System.out.print(informMessage);
@@ -59,6 +62,4 @@ public abstract class Construction {
     enum enumConstruction {
         Supermarket, PrivateHouse, ApartmentHouse, Bridge, Tunnel;
     }
-
-
 }

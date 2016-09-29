@@ -6,18 +6,16 @@ import java.util.Scanner;
  * Created by Александр on 26.09.2016.
  */
 public class Bridge extends RoadConstruction {
-    int allowableWeightOFTransport; //допустимый вес
+    private int allowableWeightOFTransport; //допустимый вес
 
     @Override
     public void init(Scanner in) {
-        exploitationPeriod = readInt(in, "Enter exploitationPeriod: ");
-        length = readInt(in, "Enter length: ");
+        super.init(in);
         allowableWeightOFTransport = readInt(in, "Enter allowable weight: ");
     }
 
     public String toString() {
-        return "It is  Bridge; exploitationPeriod: "
-                + exploitationPeriod + ", " + "length: "
-                + length + ", allowable weight: " + allowableWeightOFTransport;
+        return "It is  Bridge; " + super.toString()
+                + ", allowable weight: " + allowableWeightOFTransport;
     }
 }

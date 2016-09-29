@@ -2,25 +2,27 @@ package ru.bstu.alexandr.lab1;
 
 import java.util.Scanner;
 
+import static ru.bstu.alexandr.lab1.Construction.writeAllConstructiond;
+
 /**
  * Created by Александр on 25.09.2016.
  */
 public class WorkWithConst {
     static int writeSelectOfConstruction(Scanner in) {
         int number = 0;
-        //Scanner in = new Scanner(System.in)
         while (number < 1 || number > 5) {
-            System.out.println("Enter 1 -  supermarket," +
-                    " 2 - privateHouse, 3 - ApartmentHouse," +
-                    " 4 - Bridge, 5 - Tunnel");
+            System.out.println("Enter of number");
+            writeAllConstructiond();
             number = in.nextInt();
         }
         return number - 1;
     }
 
     static int findMinConstructWithMinExtPeriod(Construction[] constructions) {
-        int min = 32000;
-        int numberConstruction = -1;
+        if (constructions == null)
+            new RuntimeException("araray is empty");
+        int min = constructions[0].exploitationPeriod;
+        int numberConstruction = 0;
         for (int i = 0; i < constructions.length; i++) {
             int explotPeriod = constructions[i].getExploitationPeriod();
             if (explotPeriod < min) {

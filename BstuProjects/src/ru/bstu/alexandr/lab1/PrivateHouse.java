@@ -10,14 +10,11 @@ public class PrivateHouse extends Building {
     private int countBedrooms;
 
     public void init(Scanner in) {
-        exploitationPeriod = readInt(in, "Enter exploitationPeriod: ");
-        countFloors = readInt(in, "Enter count of floors: ");
+        super.init(in);
         countBedrooms = readInt(in, "Enter count of bedrooms: ");
     }
     public String toString() {
-        return "It is PrivateHouse; exploitationPeriod: "
-                + exploitationPeriod + ", " + "count of floors: "
-                + countFloors + ", " + "area: " + ", "
-                + "count of bedrooms: " + countBedrooms;
+        return "It is PrivateHouse; " + super.toString()
+                + "area: " + ", count of bedrooms: " + countBedrooms;
     }
 }

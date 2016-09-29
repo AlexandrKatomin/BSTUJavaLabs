@@ -6,18 +6,16 @@ import java.util.Scanner;
  * Created by Александр on 26.09.2016.
  */
 public class Tunnel extends RoadConstruction {
-    int allowableHeightOfTransport;
+    private int allowableHeightOfTransport;
 
     @Override
     public void init(Scanner in) {
-        exploitationPeriod = readInt(in, "Enter exploitationPeriod: ");
-        length = readInt(in, "Enter length: ");
+        super.init(in);
         allowableHeightOfTransport = readInt(in, "Enter allowable height: ");
     }
 
     public String toString() {
-        return "It is  Bridge; exploitationPeriod: "
-                + exploitationPeriod + ", " + "length: "
-                + length + ", " + "allowable height: " + allowableHeightOfTransport;
+        return "It is  Bridge; " + super.toString()
+                + ", allowable height: " + allowableHeightOfTransport;
     }
 }
