@@ -10,11 +10,6 @@ import static ru.bstu.alexandr.lab1.WorkWithConst.createArrayConstruction;
 public class Main {
 
     public static void main(String[] args) {
-        Construction a = new Supermarket();
-        Scanner in = new Scanner(System.in);
-        a.init(in);
-        System.out.print(a);
-
         Construction[] arrayConstr = createArrayConstruction();
         int numberConst;
         numberConst = findMinConstructWithMinExtPeriod(arrayConstr);

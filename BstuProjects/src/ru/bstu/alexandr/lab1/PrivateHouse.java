@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 /**
  * @author Александр on 22.09.2016.
- * todo сделать все классы наследники аналогичны этому
  */
 public class PrivateHouse extends Building {
     private int countBedrooms;

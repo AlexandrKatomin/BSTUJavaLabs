@@ -1,5 +1,7 @@
 package ru.bstu.alexandr.lab1;
 
+import com.sun.istack.internal.NotNull;
+
 import java.util.Scanner;
 import java.util.prefs.BackingStoreException;
 
@@ -8,20 +10,24 @@ import java.util.prefs.BackingStoreException;
  */
 public abstract class Construction {
 
+    //делает private и разбираемся
     int exploitationPeriod;//пока что оставил default так как ломается, еще не освоил get
-
+@NotNull
     public static Construction create(int number) {
-        enumConstruction construction = null;
-        for (enumConstruction a : enumConstruction.values())
+        enumConstruction construction = null; //todo а зачем нам тут enum?
+        for (enumConstruction a : enumConstruction.values()) //todo А можно этот когд где то в месте связанном с enum?
             if (number == a.ordinal()) {
                 construction = a;
                 break;
             }
         // todo Правильное ли приминение экзепшена ?
+    //fixme RE Эксепшен то не самопальный и определи его от Exception
         if (construction == null)
             throw new RuntimeException("Incorrect Construction code");
+//todo    Reflections reflections = new Reflections("my.project.prefix");
+//    Set<Class<? extends Object>> allClasses = reflections.getSubTypesOf(Object.class);
         switch (construction) {
-            case Supermarket:
+            case Supermarket: //Константы должны быть БОЛЬШИМИ
                 return new Supermarket();
             case PrivateHouse:
                 return new PrivateHouse();
@@ -37,8 +43,8 @@ public abstract class Construction {
     }
 
     public static void writeAllConstructiond() {
-        for (enumConstruction a : enumConstruction.values()) {
-            System.out.println(a.ordinal() + " - " + a);
+        for (enumConstruction a : enumConstruction.values()) {   //можно массив вывести по другому
+            System.out.println(a.ordinal() + " - " + a); // todo Вот  это выводить не так надо, у класса есть метод toString()
         }
     }
 
@@ -59,7 +65,8 @@ public abstract class Construction {
         return in.nextInt();
     }
 
-    enum enumConstruction {
-        Supermarket, PrivateHouse, ApartmentHouse, Bridge, Tunnel;
+    enum enumConstruction { //todo а почему с маленькой?
+        Supermarket, PrivateHouse, ApartmentHouse, Bridge, Tunnel; //todo зачем точка с запятой?
+        //todo а если порядок констант поменяю?
     }
 }
