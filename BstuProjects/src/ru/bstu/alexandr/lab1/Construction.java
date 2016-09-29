@@ -7,23 +7,41 @@ import java.util.prefs.BackingStoreException;
  * Created by Александр on 22.09.2016.
  */
 public abstract class Construction {
-    static final int SUPERMARKET = 0;
-    static final int PRIVATE_HOUSE = 1;
-    static final int APARTMENT_HOUSE = 2;
-    static final int BRIDGE = 3;
-    static final int TUNNEL = 4;
 
     int exploitationPeriod;
 
-    public static Construction create(int type) {
-        if (type > 2) throw new IllegalArgumentException("Incorrect Construction code");
-        if (type >= 0 && type <= 2)
-            return Building.create(type);
-        if (type >= 3 && type <= 4)
-            return RoadConstruction.create(type);
-        return null;
+    public static Construction create(int number) {
+        enumConstruction construction = null;
+        for (enumConstruction a : enumConstruction.values()) {
+            if (number == a.ordinal()) {
+                construction = a;
+                break;
+            }
+        }
+        // todo Правильное ли приминение экзепшена ?
+        if (construction == null)
+            throw new RuntimeException("Incorrect Construction code");
+        switch (construction) {
+            case Supermarket:
+                return new Supermarket();
+            case PrivateHouse:
+                return new PrivateHouse();
+            case ApartmentHouse:
+                return new ApartmentHouse();
+            case Bridge:
+                return new Bridge();
+            case Tunnel:
+                return new Tunnel();
+            default:
+                throw new RuntimeException("Incorrect Construction code");
+        }
     }
 
+    void writeallConstructiond() {
+        for (enumConstruction a : enumConstruction.values()) {
+            System.out.println(a.ordinal() + " - " + a);
+        }
+    }
 
     public abstract void init(Scanner scanner);
 
@@ -36,6 +54,10 @@ public abstract class Construction {
     protected int readInt(Scanner in, String informMessage) {
         System.out.print(informMessage);
         return in.nextInt();
+    }
+
+    enum enumConstruction {
+        Supermarket, PrivateHouse, ApartmentHouse, Bridge, Tunnel;
     }
 
 

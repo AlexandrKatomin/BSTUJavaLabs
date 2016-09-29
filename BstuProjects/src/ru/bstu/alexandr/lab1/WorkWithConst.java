@@ -33,7 +33,7 @@ public class WorkWithConst {
 
     static void outputConstructWithMinExtPeriod(Construction[] arr, int numberConstWithMin) {
         System.out.println("Construction with min exploitation period");
-        System.out.println(arr[numberConstWithMin].toString());
+        System.out.println(arr[numberConstWithMin]);
     }
 
     static Construction[] createArrayConstruction() {
