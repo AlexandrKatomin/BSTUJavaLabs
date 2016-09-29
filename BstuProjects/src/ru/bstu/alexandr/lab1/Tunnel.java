@@ -7,9 +7,11 @@ import java.util.Scanner;
  */
 public class Tunnel extends RoadConstruction {
     private int allowableHeightOfTransport;
-public static enumConstruction getType() {
-    return enumConstruction.Tunnel;
-}
+
+    public static enumConstruction getType() {
+        return enumConstruction.Tunnel;
+    }
+
     @Override
     public void init(Scanner in) {
         super.init(in);

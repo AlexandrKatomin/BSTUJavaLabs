@@ -3,7 +3,6 @@ package ru.bstu.alexandr.lab1;
 import com.sun.istack.internal.NotNull;
 
 import java.util.Scanner;
-import java.util.prefs.BackingStoreException;
 
 /**
  * Created by Александр on 22.09.2016.
@@ -12,7 +11,8 @@ public abstract class Construction {
 
     //делает private и разбираемся
     int exploitationPeriod;//пока что оставил default так как ломается, еще не освоил get
-@NotNull
+
+    @NotNull
     public static Construction create(int number) {
         enumConstruction construction = null; //todo а зачем нам тут enum?
         for (enumConstruction a : enumConstruction.values()) //todo А можно этот когд где то в месте связанном с enum?
@@ -21,7 +21,7 @@ public abstract class Construction {
                 break;
             }
         // todo Правильное ли приминение экзепшена ?
-    //fixme RE Эксепшен то не самопальный и определи его от Exception
+        //fixme RE Эксепшен то не самопальный и определи его от Exception
         if (construction == null)
             throw new RuntimeException("Incorrect Construction code");
 //todo    Reflections reflections = new Reflections("my.project.prefix");

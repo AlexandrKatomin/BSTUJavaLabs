@@ -12,6 +12,7 @@ public class PrivateHouse extends Building {
         super.init(in);
         countBedrooms = readInt(in, "Enter count of bedrooms: ");
     }
+
     public String toString() {
         return "It is PrivateHouse; " + super.toString()
                 + "area: " + ", count of bedrooms: " + countBedrooms;
