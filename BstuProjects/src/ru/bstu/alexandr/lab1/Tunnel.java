@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class Tunnel extends RoadConstruction {
     private int allowableHeightOfTransport;
 
-    public static enumConstruction getType() {
-        return enumConstruction.Tunnel;
+    public static EnumConstruction getType() {
+        return EnumConstruction.TUNNEL;
     }
 
     @Override

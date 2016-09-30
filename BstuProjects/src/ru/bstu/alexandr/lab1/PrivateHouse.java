@@ -14,7 +14,7 @@ public class PrivateHouse extends Building {
     }
 
     public String toString() {
-        return "It is PrivateHouse; " + super.toString()
+        return "It is " + EnumConstruction.PRIVATE_HOUSE + "; " + super.toString()
                 + "area: " + ", count of bedrooms: " + countBedrooms;
     }
 }

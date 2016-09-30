@@ -2,22 +2,24 @@ package ru.bstu.alexandr.lab1;
 
 import java.util.Scanner;
 
-import static ru.bstu.alexandr.lab1.Construction.writeAllConstructiond;
+import static ru.bstu.alexandr.lab1.Construction.EnumConstruction.valueOfInt;
+import static ru.bstu.alexandr.lab1.Construction.writeAllConstructions;
 
 /**
  * Created by Александр on 25.09.2016.
  */
 public class WorkWithConst {
-    static int writeSelectOfConstruction(Scanner in) { //todo странное название оно выводит или читает?
+    static Construction.EnumConstruction readConstructionType(Scanner in) {
         int number = 0;
         while (number < 1 || number > 5) { //todo конструкции начинаются с 0. Если человек дурак, он отсюда никогда не выйдет :)
-            writeAllConstructiond();
+            writeAllConstructions();
             //todo Это желательно вынести в метод
             System.out.println("Enter of number");
             number = in.nextInt(); //todo тут явная проблема если мы захотим ввести букву
+            return valueOfInt(number);
         }
         // todo Это явно ошибочное значение и тут надо использовать exception
-        return number - 1;
+        throw new IllegalStateException();
     }
 
     static int findMinConstructWithMinExtPeriod(Construction[] constructions) { //todo зачем возвращаем номер?
@@ -39,19 +41,19 @@ public class WorkWithConst {
     }
 
     static void outputConstructWithMinExtPeriod(Construction[] arr, int numberConstWithMin) {
-        System.out.println("Construction with min exploitation period"); //todo почему вывод в 2 строки? Передавать в метод объект
-        System.out.println(arr[numberConstWithMin]);
+        System.out.println("Construction with min exploitation period \n"
+                + arr[numberConstWithMin]); //todo почему вывод в 2 строки? Передавать в метод объект
     }
 
-    static Construction[] createArrayConstruction() {
+    static Construction[] createArrayConstruction() throws Exception {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter count of Constructions"); //todo в метод
         int countConstruct = in.nextInt();
         Construction[] arrayConstruction = new Construction[countConstruct];
-        int numberConstr;// todo какая область видимости этой переменной?
+        Construction.EnumConstruction numberConstr;// todo какая область видимости этой переменной?
 
         for (int i = 0; i < arrayConstruction.length; i++) {
-            numberConstr = WorkWithConst.writeSelectOfConstruction(in); //что будет есл иубрать имя класса?
+            numberConstr = WorkWithConst.readConstructionType(in); //что будет есл иубрать имя класса?
             arrayConstruction[i] = Construction.create(numberConstr); //почему не Enum?
             arrayConstruction[i].init(in); //если метод будет возвращать Construct, то получится замыкание
         }
