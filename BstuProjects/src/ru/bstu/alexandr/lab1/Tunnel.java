@@ -8,6 +8,10 @@ import java.util.Scanner;
 public class Tunnel extends RoadConstruction {
     private int allowableHeightOfTransport;
 
+    public static EnumConstruction getType() {
+        return EnumConstruction.TUNNEL;
+    }
+
     @Override
     public void init(Scanner in) {
         super.init(in);
@@ -15,7 +19,8 @@ public class Tunnel extends RoadConstruction {
     }
 
     public String toString() {
-        return "It is  Bridge; " + super.toString()
+        //todo была ошибка по другому в выводе класс назывался
+        return "It is  " + getType() + "; + super.toString()"
                 + ", allowable height: " + allowableHeightOfTransport;
     }
 }

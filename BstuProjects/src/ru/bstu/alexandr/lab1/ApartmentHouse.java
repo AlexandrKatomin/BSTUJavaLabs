@@ -15,7 +15,7 @@ public class ApartmentHouse extends Building {
     }
 
     public String toString() {
-        return "It is ApartmentHouse;" + super.toString()
+        return "It is APARTMENT_HOUSE;" + super.toString()
                 + ", count of apartments: " + countApartments;
     }
 }

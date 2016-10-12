@@ -1,45 +1,25 @@
 package ru.bstu.alexandr.lab1;
 
+import com.sun.istack.internal.NotNull;
+
+import java.util.Arrays;
 import java.util.Scanner;
-import java.util.prefs.BackingStoreException;
 
 /**
  * Created by Александр on 22.09.2016.
  */
 public abstract class Construction {
 
+    //todo делает private и разбираемся
     int exploitationPeriod;//пока что оставил default так как ломается, еще не освоил get
 
-    public static Construction create(int number) {
-        enumConstruction construction = null;
-        for (enumConstruction a : enumConstruction.values())
-            if (number == a.ordinal()) {
-                construction = a;
-                break;
-            }
-        // todo Правильное ли приминение экзепшена ?
-        if (construction == null)
-            throw new RuntimeException("Incorrect Construction code");
-        switch (construction) {
-            case Supermarket:
-                return new Supermarket();
-            case PrivateHouse:
-                return new PrivateHouse();
-            case ApartmentHouse:
-                return new ApartmentHouse();
-            case Bridge:
-                return new Bridge();
-            case Tunnel:
-                return new Tunnel();
-            default:
-                throw new RuntimeException("Incorrect Construction code");
-        }
+    @NotNull
+    public static Construction create(EnumConstruction typeConstruction) throws Exception {
+        return typeConstruction.getConstructionClass().newInstance();
     }
 
-    public static void writeAllConstructiond() {
-        for (enumConstruction a : enumConstruction.values()) {
-            System.out.println(a.ordinal() + " - " + a);
-        }
+    public static void writeAllConstructions() {
+        System.out.println(Arrays.toString(EnumConstruction.values())); // todo Вот  это выводить не так надо, у класса есть метод toString()
     }
 
     public void init(Scanner in) {
@@ -59,7 +39,38 @@ public abstract class Construction {
         return in.nextInt();
     }
 
-    enum enumConstruction {
-        Supermarket, PrivateHouse, ApartmentHouse, Bridge, Tunnel;
+    enum EnumConstruction { //todo а почему с маленькой?
+        SUPERMARKET(Construction.class, "Супермаркет"),
+        PRIVATE_HOUSE(PrivateHouse.class),
+        APARTMENT_HOUSE(ru.bstu.alexandr.lab1.ApartmentHouse.class),
+        Bridge,
+        TUNNEL; //todo зачем точка с запятой?
+
+        Class<? extends Construction> constructionClass;
+        String lname;
+
+        EnumConstruction(Class<? extends Construction> constructionClass, String localazableame) {
+            this.constructionClass = constructionClass;
+            lname = localazableame;
+        }
+
+        //todo а если порядок констант поменяю?
+        public static EnumConstruction valueOfInt(int typeConstruction) {
+            for (EnumConstruction a : EnumConstruction.values()) {//todo А можно этот когд где то в месте связанном с enum?
+                if (typeConstruction == a.ordinal()) {
+                    return a;
+                }
+            }
+            throw new IllegalStateException(); //здеть будет мой эксепшен! :)
+        }
+
+        @Override
+        public String toString() {
+            return ordinal() + " - " + name();
+        }
+
+        public Class<Construction> getConstructionClass() {
+            return constructionClass;
+        }
     }
 }

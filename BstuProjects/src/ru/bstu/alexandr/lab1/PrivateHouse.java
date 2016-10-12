@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 /**
  * @author Александр on 22.09.2016.
- * todo сделать все классы наследники аналогичны этому
  */
 public class PrivateHouse extends Building {
     private int countBedrooms;
@@ -13,8 +12,9 @@ public class PrivateHouse extends Building {
         super.init(in);
         countBedrooms = readInt(in, "Enter count of bedrooms: ");
     }
+
     public String toString() {
-        return "It is PrivateHouse; " + super.toString()
+        return "It is " + EnumConstruction.PRIVATE_HOUSE + "; " + super.toString()
                 + "area: " + ", count of bedrooms: " + countBedrooms;
     }
 }
